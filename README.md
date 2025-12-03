@@ -1,16 +1,16 @@
 # Pinel Localizer 
 
-This repository provides the "Pinel localizer", a 5-minute functional magnetic resonance imaging (fMRI) acquisition procedure which reliably captures the cerebral bases of key cognitive functions at an individual level, including auditory and visual perception, motor actions, reading, language comprehension, and mental calculation. 
+This repository provides the "Pinel localizer", a 5-minute functional magnetic resonance imaging (fMRI) stiumulation protocol which reliably captures the cerebral bases of key cognitive functions at an individual level, including auditory and visual perception, motor actions, reading, language comprehension, and mental calculation. 
 
-Pinel P, Thirion B, Meriaux S, Jobert A, Serres J, Le Bihan D, Poline JB and Dehaene S. (2007).  Fast reproducible identification and large-scale databasing of individual functional cognitive networks. BMC Neuroscience, 8, 91.
+Reference:
 
-Pinel P, Thirion B, Meriaux S, Jobert A, Serres J, Le Bihan D, Poline JB and Dehaene S. (2007). 
-Fast reproducible identification and large-scale databasing of individual functional cognitive networks. BMC Neuroscience, 8, 91.
+Pinel, P., Thirion, B., Meriaux, S., Jobert, A., Serres, J., Le Bihan, D., Poline, J.-B., & Dehaene, S. (2007). Fast reproducible identification and large-scale databasing of individual functional cognitive networks. _BMC Neuroscience_, 8(1), 91. https://doi.org/10.1186/1471-2202-8-91
+
 
 
 ## Prerequisites
 
-The `pinel_localizer.py` script requires the expyriment module (see [https://www.expyriment.org/](https://www.expyriment.org/))i which can be isnalled with:
+The `pinel_localizer.py` script requires the expyriment module (see [https://www.expyriment.org/](https://www.expyriment.org/)) which can be installed with:
 
     pip install expyriment
 

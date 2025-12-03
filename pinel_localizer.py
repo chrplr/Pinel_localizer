@@ -381,13 +381,14 @@ else:
         stim.present()
         
         exp.data.add([cond, a.time, stype, id, onset])
-    
+        print(a.time, cond, stype)
+
         k = kb.check()
         if k is not None:
             exp.data.add(["keypressed", a.time, k])
     
     fs.present()
-    
+    print("All stimuli played. Waiting until the end of the experiment")
     if TOTAL_EXPE_DURATION != -1:
         while a.time < TOTAL_EXPE_DURATION:
             kb.process_control_keys()

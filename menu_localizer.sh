@@ -1,13 +1,18 @@
 #! /bin/bash
 
 
+if [ x"${SUBJECT}" == "x"]; then
+       echo "You must set the SUBJECT variable with 'export SUBJECT=xxx' where xxx is a number"	
+       exit 1
+fi
+
 
 tempfile=`(tempfile) 2>/dev/null` || tempfile=/tmp/test$$
 trap "rm -f $tempfile" 0 $SIG_NONE $SIG_HUP $SIG_INT $SIG_QUIT $SIG_TERM
 
 resp=0
 
-cmd_localizer='python localizer_standard.py --background-color 0 0 0 
+cmd_localizer='python pinel_localizer.py --background-color 0 0 0 
             --text-color 250 250 250 --rsvp-display-time 250 
             --rsvp-display-isi 100 --picture-display-time 200 
             --picture-isi 0 --fs_delay_time 100 
@@ -17,7 +22,7 @@ cmd_localizer='python localizer_standard.py --background-color 0 0 0
 until [ "$resp" = "Quit" ]
 do
     next=$(($resp + 1))
-    if [ $next = "11" ]; then
+    if [ $next = "7" ]; then
         next="Quit";
     fi
 
@@ -60,7 +65,7 @@ do
          echo "session 4"
          echo $cmd_localizer$session
          $cmd_localizer$session;;
-      Quit) echo "Finito!" ;;
+      Quit) ;;
       *) dialog --msgbox "I do not understand..." 6 32 ;;
   esac
 
