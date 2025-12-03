@@ -1,3 +1,4 @@
+import os
 import io
 import os.path as op
 import argparse
@@ -134,9 +135,13 @@ STIM_DIR = args.stim_dir
 
 ##############################
 # Epyriment initialization
-expyriment.control.defaults.window_mode=True
-expyriment.control.defaults.window_size = WINDOW_SIZE
+expyriment.control.defaults.window_mode=False
+#expyriment.control.defaults.window_size = WINDOW_SIZE
 expyriment.design.defaults.experiment_background_colour = BACKGROUND_COLOR
+
+expyriment.control.defaults.display = int(os.getenv('EXPYRIMENT_DISPLAY'))
+expyriment.control.defaults.display_resolution = [int(s) for s in os.getenv('EXPYRIMENT_DISPLAY_RESOLUTION').split('x')] 
+
 exp = expyriment.design.Experiment(name="Localizer",
                                    background_colour=BACKGROUND_COLOR,
                                    foreground_colour=TEXT_COLOR,
@@ -343,16 +348,14 @@ else:
             a.wait(1)
             k = kb.check()
             if k is not None:
-                exp.data.add([a.time, 'keypressed,{}'.format(k)])
+                exp.data.add(["keypressed", a.time, k])
         stim.present()
         
-        exp.data.add(['{}'.format(cond), \
-                      a.time, \
-                      '{},{},{}'.format(stype, id, onset)])
+        exp.data.add([cond, a.time, stype, id, onset])
     
         k = kb.check()
         if k is not None:
-            exp.data.add([a.time, 'keypressed,{}'.format(k)])
+            exp.data.add(["keypressed", a.time, k])
     
     fs.present()
     
