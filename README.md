@@ -7,23 +7,22 @@ Reference:
 Pinel, P., Thirion, B., Meriaux, S., Jobert, A., Serres, J., Le Bihan, D., Poline, J.-B., & Dehaene, S. (2007). Fast reproducible identification and large-scale databasing of individual functional cognitive networks. _BMC Neuroscience_, 8(1), 91. https://doi.org/10.1186/1471-2202-8-91
 
 
+The script `pinel_localizer.py` is based on https://github.com/chrplr/audiovis
+
 
 ## Prerequisites
 
-The `pinel_localizer.py` script requires the expyriment module (see [https://www.expyriment.org/](https://www.expyriment.org/)) which can be installed with:
+The `pinel_localizer.py` script relies on the expyriment module (see [https://www.expyriment.org/](https://www.expyriment.org/)) which can be installed with:
 
     pip install expyriment
 
-## Installation 
 
-     cd <path_of_repository>
-     git clone https://github.com/neurospin-stim/localizer_standard.git
-     cd localizer-standard
+# hardware 
 
 * A video screen or video projector 
-* Earphones for auditory stimuli
-* Two response buttons, one for the left hand and one for the right hand.
-
+* headphones for auditory stimuli
+* Two response buttons, one for the left hand and one for the right hand, associated to 'b' and 'y' keypresses.
+* The experiment waits for a 't' keypress event to start
 
 ## Running the protocol
 
@@ -46,12 +45,12 @@ At the end of the experiment, the details about the events can be found in the `
 
     
 ### Using the command line
-The advanced level is the same as the basic level, but we detail the options. All documentation for the options are available by using:
+
+
+To list the options:
 
     python pinel_localizer.py -h
 
-In a few words, the script use a csv file in which the experimentater describes the stimuli.
-Each line indicates the name of the stim (clicDaudio ...), the onset, the kind of stim (sound, rsvp ...) and the source (audio file, list of words ...).
 
 The command for the localizer protocol with the options is:
 
