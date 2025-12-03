@@ -1,85 +1,69 @@
-# TUTORIAL FOR THE STANDARD LOCALIZER
+# Pinel Localizer 
 
+This repository provides the "Pinel localizer", a 5-minute functional magnetic resonance imaging (fMRI) acquisition procedure which reliably captures the cerebral bases of key cognitive functions at an individual level, including auditory and visual perception, motor actions, reading, language comprehension, and mental calculation. 
 
-This is a simple and fast acquisition procedure based on a 5-minute functional magnetic resonance imaging (fMRI) sequence that can be run 
-as easily and as systematically as an anatomical scan. This protocol captures the cerebral bases of auditory and visual perception, motor 
-actions, reading, language comprehension and mental calculation at an individual level. Individual functional maps are reliable and quite 
-precise. In Pinel et al. 2007 we showed that 80% of main maxima (isolated with a 30-minute long acquisition) were detected in this 
-5-minute design, with an average spatial precision of 6mm. 
+Pinel P, Thirion B, Meriaux S, Jobert A, Serres J, Le Bihan D, Poline JB and Dehaene S. (2007).  Fast reproducible identification and large-scale databasing of individual functional cognitive networks. BMC Neuroscience, 8, 91.
 
-When using this protocol for a paper please reference the following article:
 Pinel P, Thirion B, Meriaux S, Jobert A, Serres J, Le Bihan D, Poline JB and Dehaene S. (2007). 
 Fast reproducible identification and large-scale databasing of individual functional cognitive networks. BMC Neuroscience, 8, 91.
-
-Initially this protocol was proposed in Eprime. But today we prefer to work with a modular, free framework and independant of the Operating System.
-So we propose here a new version of this protocol in python. We use a python framework which is Expyriment ([https://www.expyriment.org/](https://www.expyriment.org/))
-for running stimuli in fMRI. 
-
-Here we present the french version, but other version (english, spanish ...) are still available in Eprime at [http://www.neurospin-wiki.org/pmwiki/Main/SharingAndExampleOfProtocols](http://www.neurospin-wiki.org/pmwiki/Main/SharingAndExampleOfProtocols).
-If you need a python version, don't hesitate to post a resquest on the issue part.
-Some scripts are available to convert Eprime stimuli in csv files in this repository. As we are going to see that in this tutorial, csv files 
-are the files containing the onset, kind of stim and sources of the protocol.
-
 
 
 ## Prerequisites
 
-To run this stimu, you will need:
+The `pinel_localizer.py` script requires the expyriment module (see [https://www.expyriment.org/](https://www.expyriment.org/))i which can be isnalled with:
 
-* The python module: Expyriment ([https://www.expyriment.org/](https://www.expyriment.org/))
-* A video screen and projector for visual stimuli
-* Earphones for auditory stimuli
-* Two response buttons (usually, subjects’ response are not analyzed; you can eventually just simulate button response) for the left and right thumbs.
-
-To acquire the localizer we use a TR of 2.4 sec, and try to cover all the brain (except eventually a part of the cerebellum). 
-
+    pip install expyriment
 
 ## Installation 
 
      cd <path_of_repository>
      git clone https://github.com/neurospin-stim/localizer_standard.git
-     cd neurospin-stim
+     cd localizer-standard
+
+* A video screen or video projector 
+* Earphones for auditory stimuli
+* Two response buttons, one for the left hand and one for the right hand.
 
 
-## Launch the protocol
-### Basic level
-To launch the stimulus:
+## Running the protocol
 
-* open a terminal and tape 
+First you must set three environment variables:
 
-    cd <path_of_repository>
+     export EXPYRIMENT_DISPLAY=0
+     export EXPYRIMENT_DISPLAY_RESOLUTION=1920x1080
+     export SUBJECT=10    # change to the correct value
+ 
+Then you can launch the experiment through the menu:
+
+     . menu_localizer.sh
 
 
-* launch the menu 
-
-    . ./menu_localizer.sh
-
-
-* so a Dialog window will be displayed
+Tihis will display the following dialog window:
 ![](./menu_dialog_localizer.png "menu_dialog_localizer.png")
 
+
+At the end of the experiment, the details about the events can be found in the `data/*.xpd` files.
+
     
-
-
-### Advanced level
+### Using the command line
 The advanced level is the same as the basic level, but we detail the options. All documentation for the options are available by using:
 
-    python localizer_standard.py -h
+    python pinel_localizer.py -h
 
 In a few words, the script use a csv file in which the experimentater describes the stimuli.
 Each line indicates the name of the stim (clicDaudio ...), the onset, the kind of stim (sound, rsvp ...) and the source (audio file, list of words ...).
 
 The command for the localizer protocol with the options is:
 
-    python localizer_standard.py --background-color 0 0 0 --text-color 250 250 250 --rsvp-display-time=250 --rsvp-display-isi=100 --picture-display-time=200 --picture-isi=0 --fs_delay_time=100 --stim-dir stim_files  --total-duration=301000  --csv_file session1_localizer_standard.csv
+    python pinel_localizer.py --background-color 0 0 0 --text-color 250 250 250 --rsvp-display-time=250 --rsvp-display-isi=100 --picture-display-time=200 --picture-isi=0 --fs_delay_time=100 --stim-dir stim_files  --total-duration=301000  --csv_file session1_localizer_standard.csv
 
 The command for launching the instructions is:
 
-    python localizer_standard.py --background-color 0 0 0 --text-color 250 250 250 --rsvp-display-time=250 --rsvp-display-isi=100 --picture-display-time=200 --picture-isi=0 --fs_delay_time=100 --stim-dir stim_files  --total-duration=301000  --splash instructions_localizer.csv
+    python pinel_localizer.py --background-color 0 0 0 --text-color 250 250 250 --rsvp-display-time=250 --rsvp-display-isi=100 --picture-display-time=200 --picture-isi=0 --fs_delay_time=100 --stim-dir stim_files  --total-duration=301000  --splash instructions_localizer.csv
 
 The command for launching the calibration is:
 
-    python localizer_standard.py --background-color 0 0 0 --text-color 250 250 250 --rsvp-display-time=250 --rsvp-display-isi=100 --picture-display-time=200 --picture-isi=0 --fs_delay_time=100 --stim-dir stim_files  --total-duration=301000    --cali 1
+    python pinel_localizer.py --background-color 0 0 0 --text-color 250 250 250 --rsvp-display-time=250 --rsvp-display-isi=100 --picture-display-time=200 --picture-isi=0 --fs_delay_time=100 --stim-dir stim_files  --total-duration=301000    --cali 1
 
 
 
@@ -99,15 +83,5 @@ The options for the localizer are:
 * --cali : option to launch only the calibration
 
 
-# IMPORT AND PROCESS DATA
-Here we propose one possibity to import and process data.
-Some points are linked to the neurospin organisation.
-
-##  Data importation 
-Please see the importation with BIDS [https://github.com/neurospin/unicog/tree/master/bids](https://github.com/neurospin/unicog/tree/master/bids).
-
-## Preprocessing
-Please see [https://github.com/neurospin/unicog/tree/master/unicogfmri](https://github.com/neurospin/unicog/tree/master/unicogfmri).
-The onset are available in the csv files. All events are logged with Epyriment. Please take a look into events and data directories.
 
 

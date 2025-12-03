@@ -1,8 +1,14 @@
+#! /usr/bin/env python3
+
 import os
 import io
+import sys
 import os.path as op
 import argparse
 import csv
+import datetime
+import warnings
+warnings.filterwarnings("ignore")
 
 import expyriment.control
 from expyriment import stimuli
@@ -13,14 +19,35 @@ from queue import PriorityQueue
 
 
 """
-Quick documentation to launch the localizer standard
+This script implements the "Pinel localizer", a 5-minute functional magnetic resonance imaging (fMRI) acquisition procedure which reliably captures the cerebral bases of key cognitive functions at an individual level, including auditory and visual perception, motor actions, reading, language comprehension, and mental calculation. 
 
-python localizer_standard.py --background-color 0 0 0 --text-color 250 250 250 
+Pinel P, Thirion B, Meriaux S, Jobert A, Serres J, Le Bihan D, Poline JB and Dehaene S. (2007).  Fast reproducible identification and large-scale databasing of individual functional cognitive networks. BMC Neuroscience, 8, 91.
+
+
+Example of Usage:
+
+python pinel_localizer.py --background-color 0 0 0 --text-color 250 250 250 
 --rsvp-display-time=250 --rsvp-display-isi=100 --picture-display-time=200 
 --picture-isi=0 --fs_delay_time=100 --stim-dir stim_files 
 --splash ./instructions_localizer_time.csv --total-duration=301000 
 """
 
+if os.getenv('EXPYRIMENT_DISPLAY') is None or os.getenv('EXPYRIMENT_DISPLAY_RESOLUTION') is None:
+    print("Before calling this script, you must set the two environment variables 'EXPERIMENT_DISPLAY' and 'EXPERIMETN8DISPAU_REOLUTION, for example:")
+    print("    export EXPYRIMENT_DISPLAY=1")
+    print("    export EXPYRIMENT_DISPLAY_RESOLUTION=1920x1080")
+    sys.exit(1)
+
+if os.getenv("SUBJECT") is None:
+    print('Before calling this script, you must set the SUBJECT environment variable, e.g.\n    export SUBJECT=1')
+    sys.exit(1)
+
+SUBJECT = int(os.getenv("SUBJECT"))
+
+print(f"EXPYRIMENT_DISPLAY={os.getenv('EXPYRIMENT_DISPLAY')}")
+print(f"EXPYRIMENT_DISPLAY_RESOLUTION={os.getenv('EXPYRIMENT_DISPLAY_RESOLUTION')}")
+print(f"SUBJECT={SUBJECT}")
+print(datetime.datetime.now())
 
 ######################################################################
 # constants (which can be modified by optional command line arguments)
@@ -334,7 +361,9 @@ else:
     exp.add_data_variable_names([ 'condition', 'time', 'stype', \
                                  'id', 'target_time'])
 
-    expyriment.control.start(skip_ready_screen=True) #start the stim
+    #######################################################################
+
+    expyriment.control.start(skip_ready_screen=True, subject_id=SUBJECT)
     
     wm.present()
     kb.wait_char('t')  # wait for scanner TTL
@@ -364,11 +393,4 @@ else:
             kb.process_control_keys()
             a.wait(100)
        
-#key_click = display_menu()
-#key_menu = key_click[0]
-
-#QUIT THE LOCALIZER STANDARD    
-
     expyriment.control.end('Merci !', 2000)
-    
-
