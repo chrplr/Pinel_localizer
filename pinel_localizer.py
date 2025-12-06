@@ -190,7 +190,7 @@ exp.clock.wait(800)
 
 #CALIBRATION
 if not (calibration is None) :
-    calibrage = "Nous allons faire un calibrage"
+    calibrage = "Calibration: we are going to play a sound"
     calibration = stimuli.TextLine(calibrage, text_font=TEXT_FONT,
                                           text_size=TEXT_SIZE,
                                           text_colour=TEXT_COLOR,
@@ -286,8 +286,6 @@ else:
         stimlist = csv.reader(io.open(csv_file, 'r', encoding='utf-8-sig'),\
                                 delimiter='\t')
         bp = op.dirname(csv_file)
-        if not(STIM_DIR==''):
-            bp = op.join(bp, STIM_DIR)
         for row in stimlist:
             cond, onset, stype, f = row[0], int(row[1]), row[2], row[3]
             if stype == 'sound':

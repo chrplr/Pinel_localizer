@@ -31,12 +31,12 @@ CMD_LOCALIZER_BASE = (
     "--text-color 250 250 250 --rsvp-display-time 250 "
     "--rsvp-display-isi 100 --picture-display-time 200 "
     "--picture-isi 0 --fs_delay_time 100 "
-    "--stim-dir stim_files --total-duration 305000"
+    "--stim-dir french --total-duration 305000"
 )
 
 class PinelLocalizerApp(npyscreen.NPSAppManaged):
     def onStart(self):
-        self.addForm("MAIN", MainMenu, name="Pinel Localizer")
+        self.addForm("MAIN", MainMenu, name="Pinel Localizer (French)")
 
 class MainMenu(npyscreen.FormBaseNew):
     def create(self):
@@ -67,8 +67,8 @@ class MainMenu(npyscreen.FormBaseNew):
             MainMenuOptionList, 
             name="Select Action (TAB to switch between Subject ID and Menu)", 
             values=[
-                "1. Effectuer un calibrage",
-                "2. Afficher les instructions",
+                "1. Calibration",
+                "2. Display Instructions",
                 "3. Run 1",
                 "4. Run 2",
                 "5. Run 3",
@@ -125,19 +125,19 @@ class MainMenuOptionList(npyscreen.MultiLineAction):
             cmd_suffix = " --cali 1"
         elif selection_index == "2":
             desc = "Instructions"
-            cmd_suffix = " --splash instructions_localizer.csv"
+            cmd_suffix = " --splash french/instructions_localizer.csv"
         elif selection_index == "3":
             desc = "Session 1"
-            cmd_suffix = " --csv_file run1_pinel_localizer.csv"
+            cmd_suffix = " --csv_file french/run1_pinel_localizer.csv"
         elif selection_index == "4":
             desc = "Session 2"
-            cmd_suffix = " --csv_file run2_pinel_localizer.csv"
+            cmd_suffix = " --csv_file french/run2_pinel_localizer.csv"
         elif selection_index == "5":
             desc = "Session 3"
-            cmd_suffix = " --csv_file run3_pinel_localizer.csv"
+            cmd_suffix = " --csv_file french/run3_pinel_localizer.csv"
         elif selection_index == "6":
             desc = "Session 4"
-            cmd_suffix = " --csv_file run4_pinel_localizer.csv"
+            cmd_suffix = " --csv_file french/run4_pinel_localizer.csv"
 
         if cmd_suffix:
             full_command = CMD_LOCALIZER_BASE + cmd_suffix
