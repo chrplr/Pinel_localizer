@@ -1,0 +1,11 @@
+[project]
+name = "pinel-localizer"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "expyriment>=1.0.0",
+    "pythondialog>=3.5.3",
+    "textual>=6.7.1",
+]
