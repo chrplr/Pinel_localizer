@@ -7,7 +7,7 @@ Reference:
 Pinel, P., Thirion, B., Meriaux, S., Jobert, A., Serres, J., Le Bihan, D., Poline, J.-B., & Dehaene, S. (2007). Fast reproducible identification and large-scale databasing of individual functional cognitive networks. _BMC Neuroscience_, 8(1), 91. https://doi.org/10.1186/1471-2202-8-91
 
 
-iNote that the script `pinel_localizer.py` is adapted from [audiovis](https://github.com/chrplr/audiovis), a general purpose audiovisual stimulation framework.
+Note that the script `pinel_localizer.py` is adapted from [audiovis](https://github.com/chrplr/audiovis), a general purpose audiovisual stimulation framework.
 
 
 ## Prerequisites
@@ -21,7 +21,7 @@ The menu.py script additionnaly require [nypscreen](https://npyscreen.readthedoc
     pip install nypscreen
 
 
-# Hardware 
+### Hardware 
 
 * A video screen or video projector 
 * headphones for auditory stimuli

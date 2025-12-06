@@ -1,5 +1,13 @@
 [project]
 name = "pinel-localizer"
+license = "CC-BY-NC-SA"
+license-file = "LICENSE-CC-BY-NC-SA.txt"
+authors = [
+  {name = "Christophe Pallier", email = "christophe@pallier.org"},
+  {name = "Antonio Moreno", email = "antonio.moreno@inserm.fr"},
+  {name = "Isabelle Denghien", email = "isabelle.denghien@inserm.fr"},
+  {name = "Philippe Pinel"}
+  ]
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"

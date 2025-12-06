@@ -83,8 +83,9 @@ class MainMenuOptionList(npyscreen.MultiLineAction):
         
         if new_sub:
             os.environ['SUBJECT'] = new_sub
-            npyscreen.notify_confirm(f"Success! Value updated to {new_sub}", title="Success")
+            #npyscreen.notify_confirm(f"Success! Value updated to {new_sub}", title="Success")
             self.parent.status_text.value = self.parent.get_header_text()
+            self.parent.status_text.display()
         else:
             npyscreen.notify_confirm("Change cancelled or empty.", title="Cancelled")
         
@@ -118,8 +119,8 @@ class MainMenuOptionList(npyscreen.MultiLineAction):
             full_command = CMD_LOCALIZER_BASE + cmd_suffix
             
             npyscreen.blank_terminal()
-            print(f"Running: {desc}")
-            print(full_command)
+            #print(f"Running: {desc}")
+            #print(full_command)
             
             try:
                 subprocess.call(full_command, shell=True)

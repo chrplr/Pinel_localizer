@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Pallier
+    given-names: Christophe
+    orcid: https://orcid.org/1234-5678-9101-1121
+  - family-names: Moreno
+    given-names: Antonio
+  - family-names: Denghien-Courcol
+    given-names: Isabelle
+  - family-name: Pinel
+    given-name:  Philippe
+title: "Pinel fMRI Localizer"
+version: 1.0.0
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.1234
+date-released: 2025-12-06

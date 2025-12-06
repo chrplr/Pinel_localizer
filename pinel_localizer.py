@@ -1,4 +1,5 @@
 #! /usr/bin/env python3
+# LICNCE: CC-BY-NC (https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.en)
 
 import os
 import io
