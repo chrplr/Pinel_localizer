@@ -1,5 +1,6 @@
 #! /usr/bin/env python3
-# LICNCE: CC-BY-NC (https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.en)
+# sam. 06 déc. 2025 17:26:29 CET
+# LICENSE: CC-BY-NC-SA (https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.en)
 
 import os
 import io
@@ -34,7 +35,7 @@ python pinel_localizer.py --background-color 0 0 0 --text-color 250 250 250
 """
 
 if os.getenv('EXPYRIMENT_DISPLAY') is None or os.getenv('EXPYRIMENT_DISPLAY_RESOLUTION') is None:
-    print("Before calling this script, you must set the two environment variables 'EXPERIMENT_DISPLAY' and 'EXPERIMETN8DISPAU_REOLUTION, for example:")
+    print("Before calling this script, you must set the two environment variables 'EXPERIMENT_DISPLAY' and 'EXPERIMENT_DISPLAY_RESOLUTION, for example:")
     print("    export EXPYRIMENT_DISPLAY=1")
     print("    export EXPYRIMENT_DISPLAY_RESOLUTION=1920x1080")
     sys.exit(1)
@@ -48,7 +49,6 @@ SUBJECT = int(os.getenv("SUBJECT"))
 print(f"EXPYRIMENT_DISPLAY={os.getenv('EXPYRIMENT_DISPLAY')}")
 print(f"EXPYRIMENT_DISPLAY_RESOLUTION={os.getenv('EXPYRIMENT_DISPLAY_RESOLUTION')}")
 print(f"SUBJECT={SUBJECT}")
-print(datetime.datetime.now())
 
 ######################################################################
 # constants (which can be modified by optional command line arguments)
@@ -164,7 +164,6 @@ STIM_DIR = args.stim_dir
 ##############################
 # Epyriment initialization
 expyriment.control.defaults.window_mode=False
-#expyriment.control.defaults.window_size = WINDOW_SIZE
 expyriment.design.defaults.experiment_background_colour = BACKGROUND_COLOR
 
 expyriment.control.defaults.display = int(os.getenv('EXPYRIMENT_DISPLAY'))
@@ -173,14 +172,10 @@ expyriment.control.defaults.display_resolution = [int(s) for s in os.getenv('EXP
 exp = expyriment.design.Experiment(name="Localizer",
                                    background_colour=BACKGROUND_COLOR,
                                    foreground_colour=TEXT_COLOR,
-                                   text_size=TEXT_SIZE,
+                                   text_size=20,
                                    text_font=TEXT_FONT)
-#expyriment.control.defaults.open_gl=1
 expyriment.misc.add_fonts('fonts')
 expyriment.control.initialize(exp)
-#expyriment.control.defaults.quit_key = expyriment.misc.constants.K_q
-#expyriment.control.defaults.fast_quit = True
-#exp.background_colour = BACKGROUND_COLOR
 exp._screen_colour = BACKGROUND_COLOR
 
 kb = expyriment.io.Keyboard()
@@ -190,8 +185,6 @@ fs = stimuli.FixCross(size=(25, 25), line_width=3, colour=TEXT_COLOR)
 ##############################
 # START PROTOCOL
 
-#time to display the message of Preparing expyriment, otherwise it can be very short 
-#and we don't see what it is exactly
 exp.clock.wait(800)
 
 
@@ -288,7 +281,6 @@ else:
     maptext = dict()
     mappictures = dict()
     mapvideos = dict()
-    print(csv_file)
     if csv_file:
         exp.add_experiment_info(csv_file)
         stimlist = csv.reader(io.open(csv_file, 'r', encoding='utf-8-sig'),\
@@ -382,14 +374,12 @@ else:
         stim.present()
         
         exp.data.add([cond, a.time, stype, id, onset])
-        print(a.time, cond, stype)
 
         k = kb.check()
         if k is not None:
             exp.data.add(["keypressed", a.time, k])
     
     fs.present()
-    print("All stimuli played. Waiting until the end of the experiment")
     if TOTAL_EXPE_DURATION != -1:
         while a.time < TOTAL_EXPE_DURATION:
             kb.process_control_keys()

@@ -4,12 +4,12 @@
 8000	box	2- Ecoute ou lecture de soustractions :\n vous devrez les résoudre mentalement.\n- Ne PAS donner de réponse orale.\n- Faire les calculs jusqu'au bout.
 8000	box	3- 'Appuyez 3 fois sur le bouton gauche / droit' :\n pressez alors sur le bon bouton \naussi vite que possible (!!) \nsuivant les instructions auditives/visuelles \n (laisser l'autre main au repos). 
 7000	box	4- Visualisation passive\n de damiers noir et blanc\n \n (garder le regard au centre des damiers!)
-200	pict	checherboardhpb.bmp
-200	pict	checherboardhnb.bmp
-200	pict	checherboardhpb.bmp
-200	pict	checherboardhnb.bmp
-200	pict	checherboardhpb.bmp
-200	pict	checherboardhnb.bmp	
+200	pict	checkerboard_hpb.bmp
+200	pict	checkerboard_hnb.bmp
+200	pict	checkerboard_hpb.bmp
+200	pict	checkerboard_hnb.bmp
+200	pict	checkerboard_hpb.bmp
+200	pict	checkerboard_hnb.bmp	
 7000	box	Les stimulations visuelles consisteront\n en une série de groupe de mots\n (phrase, instruction ou calcul)\n présentées rapidement.
 2000	text	en voici deux exemples
 1000	text	

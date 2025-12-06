@@ -1,6 +1,9 @@
 # Pinel Localizer 
 
-This repository provides the "Pinel localizer", a 5-minute functional magnetic resonance imaging (fMRI) stiumulation protocol which reliably captures the cerebral bases of key cognitive functions at an individual level, including auditory and visual perception, motor actions, reading, language comprehension, and mental calculation. 
+This repository provides a script to run the _"Pinel localizer"_, a 5-minute functional magnetic resonance imaging (fMRI) stimulation protocol which reliably captures the cerebral bases of key cognitive functions at an individual level, including auditory and visual perception, motor actions, reading, language comprehension, and mental calculation. 
+
+![stimulation](stimulation.png)
+
 
 Reference:
 
@@ -16,7 +19,7 @@ The `pinel_localizer.py` script relies on the expyriment package (see [https://w
 
     pip install expyriment 
 
-The menu.py script additionnaly require [nypscreen](https://npyscreen.readthedocs.io/).
+The `menu.py` script additionnaly require [nypscreen](https://npyscreen.readthedocs.io/).
 
     pip install nypscreen
 
@@ -31,35 +34,31 @@ The menu.py script additionnaly require [nypscreen](https://npyscreen.readthedoc
 ## Running the protocol
 
 
-You can launch the experiment with
+To launch the experiment, run:
 
      python menu.py
 
-Set the correct subject number, then you can launch the instructions or the runs.
-The cursor automatically increment in position after the exectution of a line, so you just have to press a series 'Enter' to execute the whole thing.
+Set the correct subject number, then you will be able to launch the instructions then the runs.
+The cursor automatically increments its position after the exectution of a line, so you can just press a series 'Enter' to execute the whole thing.
 
+
+4 runs with different random orders are availables. The corresponding event timings are in the files `session?*.csv`.
+
+After running the experiment, the `data/*.xpd` files contain the actual timings, e.g., of keypress events.
 
 Note: you may need to set the environement variables depending on your setup (one or multiple screens,  and the desired screen resolution)
 
-     export EXPYRIMENT_DISPLAY=0
+     export EXPYRIMENT_DISPLAY=0   # screen where to display the stimuli
      export EXPYRIMENT_DISPLAY_RESOLUTION=1920x1080
 
-     export SUBJECT=10    # change to the correct value
- 
-The timings of the events are in the fils `sessions?*.csv`.
-
-The `data/*.xpd` files contained the actual timings, E.G., of keypress events.
-
+     export SUBJECT=10    # subject id
     
 ### Using the command line
 
 
-To list the options:
+    
 
-    python pinel_localizer.py -h
-
-
-The command for the localizer protocol with the options is:
+Examples:
 
     python pinel_localizer.py --background-color 0 0 0 --text-color 250 250 250 --rsvp-display-time=250 --rsvp-display-isi=100 --picture-display-time=200 --picture-isi=0 --fs_delay_time=100 --stim-dir stim_files  --total-duration=301000  --csv_file session1_localizer_standard.csv
 
@@ -71,6 +70,7 @@ The command for launching the calibration is:
 
     python pinel_localizer.py --background-color 0 0 0 --text-color 250 250 250 --rsvp-display-time=250 --rsvp-display-isi=100 --picture-display-time=200 --picture-isi=0 --fs_delay_time=100 --stim-dir stim_files  --total-duration=301000    --cali 1
 
+    python pinel_localizer.py -h
 
 
 The options for the localizer are: 
