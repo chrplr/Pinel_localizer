@@ -1,3 +1,6 @@
 * create the run*.csv for english and spanish stimuli, and modify menu.py to allow to select the language
 * create more run*.csv
+* add the nilearn analysis scripts
+* add the italian, portuguese and brazilian stimuli
+
 
