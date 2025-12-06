@@ -1,3 +1,4 @@
+* 2025-12-06  [chrplr]  Modify mdenu script to display the subject number and allow to change it
 * 2025-12-03  [chrplr]  introduced the variables EXPYRIMENT_DISPLAY and EXPYRIMENT_DISPLAY_RESOLUTION to handle multiple screens setup 
 * 2025-12-03  [chrplr]  introduced the SUBJECT envvar to avoid the autosubject increment in the menu_localizer.sh
 * 2025-12-03  [chrplr]  corrected the bad formatting of xpd files

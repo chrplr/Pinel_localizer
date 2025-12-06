@@ -7,17 +7,21 @@ Reference:
 Pinel, P., Thirion, B., Meriaux, S., Jobert, A., Serres, J., Le Bihan, D., Poline, J.-B., & Dehaene, S. (2007). Fast reproducible identification and large-scale databasing of individual functional cognitive networks. _BMC Neuroscience_, 8(1), 91. https://doi.org/10.1186/1471-2202-8-91
 
 
-The script `pinel_localizer.py` is based on https://github.com/chrplr/audiovis
+iNote that the script `pinel_localizer.py` is adapted from [audiovis](https://github.com/chrplr/audiovis), a general purpose audiovisual stimulation framework.
 
 
 ## Prerequisites
 
-The `pinel_localizer.py` script relies on the expyriment module (see [https://www.expyriment.org/](https://www.expyriment.org/)) which can be installed with:
+The `pinel_localizer.py` script relies on the expyriment package (see [https://www.expyriment.org/](https://www.expyriment.org/)).
 
-    pip install expyriment
+    pip install expyriment 
+
+The menu.py script additionnaly require [nypscreen](https://npyscreen.readthedocs.io/).
+
+    pip install nypscreen
 
 
-# hardware 
+# Hardware 
 
 * A video screen or video projector 
 * headphones for auditory stimuli
@@ -26,22 +30,25 @@ The `pinel_localizer.py` script relies on the expyriment module (see [https://ww
 
 ## Running the protocol
 
-First you must set three environment variables:
+
+You can launch the experiment with
+
+     python menu.py
+
+Set the correct subject number, then you can launch the instructions or the runs.
+The cursor automatically increment in position after the exectution of a line, so you just have to press a series 'Enter' to execute the whole thing.
+
+
+Note: you may need to set the environement variables depending on your setup (one or multiple screens,  and the desired screen resolution)
 
      export EXPYRIMENT_DISPLAY=0
      export EXPYRIMENT_DISPLAY_RESOLUTION=1920x1080
+
      export SUBJECT=10    # change to the correct value
  
-Then you can launch the experiment through the menu:
+The timings of the events are in the fils `sessions?*.csv`.
 
-     . menu_localizer.sh
-
-
-Tihis will display the following dialog window:
-![](./menu_dialog_localizer.png "menu_dialog_localizer.png")
-
-
-At the end of the experiment, the details about the events can be found in the `data/*.xpd` files.
+The `data/*.xpd` files contained the actual timings, E.G., of keypress events.
 
     
 ### Using the command line
