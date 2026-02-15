@@ -1,7 +1,5 @@
 [project]
 name = "pinel-localizer"
-license = "CC-BY-NC-SA"
-license-file = "LICENSE-CC-BY-NC-SA.txt"
 authors = [
   {name = "Christophe Pallier", email = "christophe@pallier.org"},
   {name = "Antonio Moreno", email = "antonio.moreno@inserm.fr"},
@@ -11,8 +9,11 @@ authors = [
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.10"
 dependencies = [
     "expyriment>=1.0.0",
     "npyscreen>=4.10.5",
 ]
+
+[tool.setuptools]
+py-modules = []
